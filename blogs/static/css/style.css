@@ -31,3 +31,11 @@
     font-style: italic;
     color: blue;
 }
+
+.register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+

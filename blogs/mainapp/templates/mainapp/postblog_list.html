@@ -3,23 +3,26 @@
 
 {% block container %}
 
-<div class="post">
-    <h4 class="title">mobile app</h4>
-    <p class="text">mobile app</p>
-</div>
-    
-<hr align="center" width=100% size="4" color=blue />
-<!--
-<div class="mobile-app">
-    <h4 class="h4-mobile-app">mobile app</h4>
-    <h2 class="h2-mibile-app">Find. Follow. Favorite.</h2>
-    <h5 class="h5-mobile-app">Save your favorites and share your style.</h5>
-    <div class="markets">
-        <a href="" class="store-link"><img src="{% static 'img/app-store.svg' %}" alt=""></a>
-        <a href="" class="store-link"><img src="{% static 'img/google-play.svg' %}" alt=""></a>
-    </div>
-</div>
--->
-{% endblock %}
+{% if user.is_authenticated %}
+    {% if object_list %}
+        <a href="{% url 'main:logout' %}" class="logout" alt="logout">logout</a>
 
+        {% for object in object_list %}
+            <div class="post">
+                <h4 class="title">{{ object.title }}</h4>
+                <p class="text">{{ object.text }}</p>
+                <p class="date">{{ object.date }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% else %}
+
+<a href="{% url 'main:login' %}" class="login" alt="login">login</a>
+<h4 class="title">Please login</h4>
+
+{% endif %}
+
+<hr align="center" width=100% size="4" color=blue />
+
+{% endblock %}
 

@@ -1,0 +1,22 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block container %}
+
+
+
+    <div class="register">
+        <form class="form-horizontal" method="post">
+
+            {% csrf_token %}
+            {% if next %}
+                <input type="hidden" name="next" value="{{ next }}">
+            {% endif %}
+            {{ form.as_p }}
+
+            <input class="form-control" type="submit" value="войти">
+
+        </form>
+
+    </div>
+{% endblock %}
