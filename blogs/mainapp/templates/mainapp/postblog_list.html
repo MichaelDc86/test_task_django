@@ -2,10 +2,11 @@
 {% load static %}
 
 {% block container %}
-
+<!--{{ request.resolver_match }}-->
 {% if user.is_authenticated %}
     {% if object_list %}
         <a href="{% url 'main:logout' %}" class="logout" alt="logout">logout</a>
+        <a href="http://127.0.0.1:8000/admin/">admin</a>z
 
         {% for object in object_list %}
             <div class="post">
@@ -18,6 +19,8 @@
 {% else %}
 
 <a href="{% url 'main:login' %}" class="login" alt="login">login</a>
+<a href="{% url 'main:register' %}" class="register" alt="login">register</a>
+<a href="http://127.0.0.1:8000/admin/">admin</a>
 <h4 class="title">Please login</h4>
 
 {% endif %}
