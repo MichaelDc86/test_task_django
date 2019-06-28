@@ -1,0 +1,16 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+
+
+{% block container %}
+    <div>
+        Really want to del <b>{{ user_to_delete.title }}
+                    ({{ user_to_delete.first_name|title }}</b>?
+        <form method="post">
+            {% csrf_token %}
+            <input class="btn btn-danger" type="submit" value="delete">
+        </form>
+
+        <a href="{% url 'mainapp:blog_list' %}" class="btn btn-success">cancel</a>
+    </div>
+{% endblock %}

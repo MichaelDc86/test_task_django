@@ -5,14 +5,20 @@
 <!--{{ request.resolver_match }}-->
 {% if user.is_authenticated %}
     {% if object_list %}
-        <a href="{% url 'main:logout' %}" class="logout" alt="logout">logout</a>
-        <a href="http://127.0.0.1:8000/admin/">admin</a>z
-
+        <div class='menu'>
+            <a href="{% url 'main:logout' %}" class="logout" alt="logout">logout</a>
+            <a href="{% url 'main:post_create' %}" class="logout" alt="logout">create post</a>
+            <a href="http://127.0.0.1:8000/admin/">admin</a>
+        </div>
         {% for object in object_list %}
             <div class="post">
-                <h4 class="title">{{ object.title }}</h4>
+                <a href="{% url 'main:post_update' object.pk %}" class="title" alt="title">{{ object.title }}</a>
+                <a href="{% url 'main:post_delete' object.pk %}" >delete</a>
+
+<!--                <h4 class="title">{#{ object.title }#}</h4>-->
                 <p class="text">{{ object.text }}</p>
                 <p class="date">{{ object.date }}</p>
+<!--                <p class="date">{{ object.pk }}</p>-->
             </div>
         {% endfor %}
     {% endif %}
