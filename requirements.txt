@@ -1,5 +1,5 @@
 Click==7.0
-Django==2.2.2
+Django==2.2.18
 Pillow==6.0.0
 pip-tools==3.8.0
 pytz==2019.1
